@@ -1,0 +1,33 @@
+﻿@model ALMISA.Models.ViewModels.CiudadVM
+
+@{
+    ViewData["Title"] = "detalle_ciudades";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-8">
+    <div class="box box-primary">
+        <h2 style="text-align: center">Detalle ciudad</h2>
+
+       
+
+        <form asp-action="detalle_ciudades" asp-controller="Ciudades" method="POST" role="form" style="width: 70%; margin: auto;padding:50px">
+                <!-- ID de la venta (oculto) -->
+                <input type="hidden" asp-for="oCiudad.IdCiudad" />
+
+                <div class="mb-2">
+                <label class="form-label" asp-for="oCiudad.Nombre">Nombre de la ciudad</label>
+                <input class="form-control form-control-sm" asp-for="oCiudad.Nombre" type="text" />
+                </div>
+
+                <div class="mb-2" style="margin-top: 5%;">
+                    <button class="btn btn-primary btn-sm w-25" type="submit">Crear ciudad</button>
+                </div>
+     
+            </form>
+        
+
+    </div>
+     
+        
+</div>

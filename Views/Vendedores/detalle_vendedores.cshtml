@@ -1,0 +1,82 @@
+﻿@model ALMISA.Models.ViewModels.VendedorVM
+
+@{
+    ViewData["Title"] = "detalle_categorias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-8">
+    <div class="box box-primary">
+        <h2 style="text-align: center">Detalle categorias</h2>
+
+       
+
+        <form asp-action="detalle_vendedores" asp-controller="Vendedores" method="POST" role="form" style="width: 70%; margin: auto;padding:50px">
+                <!-- ID de la venta (oculto) -->
+                <input type="hidden" asp-for="oVendedor.IdVendedor" />
+
+                <div class="mb-2">
+                     <label class="form-label" asp-for="oVendedor.Nombres">Nombre del Vendedor</label>
+                    <input class="form-control form-control-sm" asp-for="oVendedor.Nombres" type="text" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" asp-for="oVendedor.Apellidos">Apellidos del Vendedor</label>
+                     <input class="form-control form-control-sm" asp-for="oVendedor.Apellidos" type="text" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" asp-for="oVendedor.DocumentoIdentidad">Numero de cedula</label>
+                    <input class="form-control form-control-sm" asp-for="oVendedor.DocumentoIdentidad" type="text" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" asp-for="oVendedor.TipoDocumento">Tipo de documento</label>
+                    <input class="form-control form-control-sm" asp-for="oVendedor.TipoDocumento" type="text" value="cedula" />
+                </div>
+
+                <div class="mb-2 ">
+                    <label class="form-label" asp-for="oVendedor.FechaNacimiento">Fecha de nacimiento</label>
+                    <input class="form-control form-control-sm" asp-for="oVendedor.FechaNacimiento" type="date" />
+                </div>
+
+                <div class="mb-2 ">
+                    <label class="form-label" asp-for="oVendedor.FechaVinculacion">Fecha de vinculacion</label>
+                     <input class="form-control form-control-sm" asp-for="oVendedor.FechaVinculacion" type="date" />
+                </div>
+
+                <div class="mb-2 ">
+                    <label class="form-label" asp-for="oVendedor.SalarioBase">Salario Base</label>
+                    <input class="form-control form-control-sm" asp-for="oVendedor.SalarioBase" type="number" />
+                </div>
+
+                <div class="mb-2 ">
+                <label class="form-label" asp-for="oVendedor.IdVendedorJefe">Id del vendedor en jefe</label>
+                    <input class="form-control form-control-sm" asp-for="oVendedor.IdVendedorJefe" type="number" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Ciudad base de operaciones</label>
+                <select class="form-control select2" style="width: 100%;" asp-for="oVendedor.IdCiudadBaseDeOperaciones">
+                        <option selected disabled>--Selecciona la ciudad--</option>
+                        @foreach (var ciudad in Model.oCiudad)
+                        {
+                            <option value="@ciudad.Value">
+                                @ciudad.Text
+                            </option>
+                        }
+                    </select>
+                </div>
+
+
+                <div class="mb-2" style="margin-top: 5%;">
+                    <button class="btn btn-primary btn-sm w-25" type="submit">Ingresar vendedor</button>
+                </div>
+     
+            </form>
+        
+
+    </div>
+     
+        
+</div>

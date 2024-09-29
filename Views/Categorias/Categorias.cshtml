@@ -1,0 +1,80 @@
+﻿@model List<ALMISA.Models.Categoria>
+
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+
+<div class="card">
+
+    <div class="box">
+
+        <div class="box-header">
+            <h3 class="box-title">Data Table With Full Features</h3>
+
+            <div class="card-header">
+                <h5>Lista de categorias</h5>
+            </div>
+
+            <a class="btn btn-success btn-sm" asp-action="detalle_categorias" asp-controller="Categorias" asp-route-IdCategoria="0">Crear Nueva categoria</a>
+            <hr />
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="dataTables_length" id="example1_length">
+                           
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+
+                            <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <td>Categoria ID:</td>
+                                        <td>Nombre:</td>
+                                        <td>Descripcion:</td>
+                                        <td>Acciones</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">@item.IdCategoria</td>
+                                            <td>@item.Nombre</td>
+                                            <td>@item.Descripcion</td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" asp-action="detalle_categorias" asp-controller="Categorias" asp-route-IdCategoria="@item.IdCategoria">Editar</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                     </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+   </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+    })
+</script>

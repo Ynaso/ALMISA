@@ -1,0 +1,86 @@
+﻿@model ALMISA.Models.ViewModels.ProductosVM
+
+@{
+    ViewData["Title"] = "detalle_categorias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-8">
+    <div class="box box-primary">
+        <h2 style="text-align: center">Detalle producto</h2>
+
+       
+
+        <form asp-action="detalle_productos" asp-controller="Productos" method="POST" role="form" style="width: 70%; margin: auto;padding:50px">
+                <!-- ID de la venta (oculto) -->
+                <input type="hidden" asp-for="oProducto.IdProducto" />
+
+                <div class="mb-2">
+                    <label class="form-label" asp-for="oProducto.Nombre">Nombre del Producto</label>
+                    <input class="form-control form-control-sm" asp-for="oProducto.Nombre" type="text" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" asp-for="oProducto.CodigoBarras">Codigo de barras del producto</label>
+                    <input class="form-control form-control-sm" asp-for="oProducto.CodigoBarras" type="text" />
+                </div>
+
+                <div class="mb-2">
+                <label class="form-label" asp-for="oProducto.PresentacionComercial">Presentacion comercial</label>
+                <input class="form-control form-control-sm" asp-for="oProducto.PresentacionComercial" type="text" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" asp-for="oProducto.PrecioUnitarioActual">Precio unitario</label>
+                <input class="form-control form-control-sm" asp-for="oProducto.PrecioUnitarioActual" type="number" step="0.01" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label" asp-for="oProducto.PesoEnKilogramos">peso en KG</label>
+                    <input class="form-control form-control-sm" asp-for="oProducto.PesoEnKilogramos" type="number" step="0.01"/>
+                </div>
+
+                <div class="mb-2 ">
+                    <label class="form-label" asp-for="oProducto.UnidadesEnBodega">Unidades</label>
+                    <input class="form-control form-control-sm" asp-for="oProducto.UnidadesEnBodega" type="number" />
+                </div>
+
+             
+                <div class="mb-2">
+                     <label class="form-label">Categorias</label>
+                    <select class="form-control select2" style="width: 100%;" asp-for="oProducto.IdCategoria">
+                            <option selected disabled>--Selecciona la categoria--</option>
+                            @foreach (var categorias in Model.oCategoria)
+                            {
+                            <option value="@categorias.Value">
+                                @categorias.Text
+                                </option>
+                            }
+                        </select>
+                </div>
+
+            <div class="mb-2">
+                <label class="form-label">Productor</label>
+                <select class="form-control select2" style="width: 100%;" asp-for="oProducto.IdProductor">
+                    <option selected disabled>--Selecciona el productor--</option>
+                    @foreach (var productor in Model.oProductor)
+                    {
+                        <option value="@productor.Value">
+                            @productor.Text
+                        </option>
+                    }
+                </select>
+            </div>
+
+
+                <div class="mb-2" style="margin-top: 5%;">
+                    <button class="btn btn-primary btn-sm w-25" type="submit">Ingresar producto</button>
+                </div>
+     
+            </form>
+        
+
+    </div>
+     
+        
+</div>

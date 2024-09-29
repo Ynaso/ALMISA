@@ -1,0 +1,93 @@
+﻿@model List<ALMISA.Models.Pedido>
+
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+
+<div class="card">
+
+    <div class="box">
+
+        <div class="box-header">
+            <h3 class="box-title">Data Table With Full Features</h3>
+
+            <div class="card-header">
+                <h5>Lista de productos</h5>
+            </div>
+
+            <a class="btn btn-success btn-sm" asp-action="detalle_pedidos" asp-controller="Pedidos" asp-route-IdCategoria="0">Crear Nuevo Pedido</a>
+            <hr />
+
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="dataTables_length" id="example1_length">
+                           
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <td>Pedido ID</td>
+                                        <td>Fecha del pedido</td>
+                                        <td>Fecha estimada de entrega</td>
+                                        <td>Fecha real de la entrega</td>
+                                        <td>Estado de la entrega</td>
+                                        <td>Quien recibe</td>
+                                        <td>Vendedor</td>
+                                        <td>Cliente</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">@item.IdPedido</td>
+                                            <td>@item.FechaRealizacion</td>
+                                            <td>@item.FechaEstimadaEntrega</td>
+                                            <td>@item.FechaRealEntrega</td>
+                                            <td>@item.EstadoActual</td>
+                                            <td>@item.PersonaQueRecibe</td>
+                                            <td>@($"{item.oVendedor.Nombres} {item.oVendedor.Apellidos}")</td>
+                                            <td>@item.oCliente.Nombre</td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" asp-action="detalle_pedidos" asp-controller="Pedidos" asp-route-IdPedido="@item.IdPedido">Editar</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+   
+
+   
+
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+        $('.select2').select2()
+    })
+
+     
+
+</script>

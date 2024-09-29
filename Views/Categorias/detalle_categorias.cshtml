@@ -1,0 +1,38 @@
+﻿@model ALMISA.Models.ViewModels.CategoriaVM
+
+@{
+    ViewData["Title"] = "detalle_categorias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-8">
+    <div class="box box-primary">
+        <h2 style="text-align: center">Detalle categorias</h2>
+
+       
+
+        <form asp-action="detalle_categorias" asp-controller="Categorias" method="POST" role="form" style="width: 70%; margin: auto;padding:50px">
+                <!-- ID de la venta (oculto) -->
+                <input type="hidden" asp-for="oCategoria.IdCategoria" />
+
+                <div class="mb-2">
+                <label class="form-label" asp-for="oCategoria.Nombre">Nombre de la categoria</label>
+                <input class="form-control form-control-sm" asp-for="oCategoria.Nombre" type="text" />
+                </div>
+
+                <div class="mb-2 ">
+                    <label class="form-label" asp-for="oCategoria.Descripcion">Descripcion de la categoria</label>
+                    <input class="form-control form-control-sm" asp-for="oCategoria.Descripcion" type="text" />
+                </div>
+
+                <div class="mb-2" style="margin-top: 5%;">
+                    <button class="btn btn-primary btn-sm w-25" type="submit">Crear Categoria</button>
+                </div>
+     
+            </form>
+        
+
+    </div>
+     
+        
+</div>

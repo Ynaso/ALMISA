@@ -1,0 +1,57 @@
+﻿@model ALMISA.Models.ViewModels.ProductorVM
+
+@{
+    ViewData["Title"] = "detalle_categorias";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-8">
+    <div class="box box-primary">
+        <h2 style="text-align: center">Detalle categorias</h2>
+
+       
+
+        <form asp-action="detalle_productores" asp-controller="Productores" method="POST" role="form" style="width: 70%; margin: auto;padding:50px">
+                <!-- ID de la venta (oculto) -->
+                <input type="hidden" asp-for="oProductor.IdProductor" />
+
+                <div class="mb-2">
+                <label class="form-label" asp-for="oProductor.Nombre">Nombre del productor</label>
+                <input class="form-control form-control-sm" asp-for="oProductor.Nombre" type="text" />
+                </div>
+
+                <div class="mb-2 ">
+                    <label class="form-label" asp-for="oProductor.DireccionOficinaPrincipal">Direccion principal del productor</label>
+                    <input class="form-control form-control-sm" asp-for="oProductor.DireccionOficinaPrincipal" type="text" />
+                </div>
+
+                <div class="mb-2 ">
+                    <label class="form-label" asp-for="oProductor.Telefono">Telefono del productor</label>
+                    <input class="form-control form-control-sm" asp-for="oProductor.Telefono" type="text" />
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label">Ciudad principal</label>
+                <select class="form-control select2" style="width: 100%;" asp-for="oProductor.IdCiudadOficinaPrincipal">
+                        <option selected disabled>--Selecciona la ciudad--</option>
+                        @foreach (var ciudad in Model.oCiudad)
+                        {
+                            <option value="@ciudad.Value">
+                                @ciudad.Text
+                            </option>
+                        }
+                    </select>
+                </div>
+
+
+                <div class="mb-2" style="margin-top: 5%;">
+                    <button class="btn btn-primary btn-sm w-25" type="submit">Ingresar productor</button>
+                </div>
+     
+            </form>
+        
+
+    </div>
+     
+        
+</div>
